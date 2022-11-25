@@ -119,11 +119,7 @@ M.channel.oneshot = function()
   --- sender is not async
   --- sends a value which can be nil
   local sender = function(...)
-    -- assert(not sent, "Oneshot channel can only send once")
-    if (sent) then
-      return
-    end
-    
+    assert(not sent, "Oneshot channel can only send once")
     sent = true
 
     if saved_callback ~= nil then
